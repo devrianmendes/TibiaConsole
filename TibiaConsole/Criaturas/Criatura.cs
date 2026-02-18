@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace criaturas
+﻿namespace criaturas
 {
     internal abstract class Criatura
     {
@@ -10,23 +6,36 @@ namespace criaturas
         public string Nome { get; protected set; }
         public int VidaMaxima { get; protected set; }
         public int VidaAtual { get; protected set; }
-        public EstiloCombate EstiloCombate { get; protected set; }
-        public decimal Ataque { get; protected set; }
-        public decimal Defesa { get; protected set; }
+        public int Ataque { get; protected set; }
+        public int Defesa { get; protected set; }
         public int Cura { get; protected set; }
 
 
         public override string ToString()
         {
-            return $"Nome: {Nome} - Vida total: {VidaAtual} de {VidaMaxima} - Combate: {EstiloCombate} - Ataque: {Ataque}";
+            return $"Nome: {Nome} - Vida total: {VidaMaxima} - Vida atual: {VidaAtual} - Ataque: {Ataque} - Defesa: {Defesa}";
         }
+
+
         //Métodos
-        public void Atacar()
+        public virtual void CausarDano(Criatura criaturaAlvo)
+        {
+            criaturaAlvo.ReceberDano(this.Ataque);
+        }
+
+        public virtual void ReceberDano(int dano)
+        {
+            VidaAtual -= dano;
+            if(VidaAtual < 1)
+            {
+                Morrer();
+            }
+        }
+
+        protected virtual void Morrer()
         {
 
         }
-
-        public abstract void Curar();
 
     }
 }

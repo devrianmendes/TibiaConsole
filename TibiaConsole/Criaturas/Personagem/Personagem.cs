@@ -1,17 +1,35 @@
-﻿using System;
+﻿using criaturas;
 
-namespace criaturas
+namespace personagens
 {
     internal abstract class Personagem : Criatura
     {
-        //public Vocacoes vocacao { get; private set; }
-        public int Experiencia { get; set; }
+        public int ExperienciaAtual { get; set; } = 0;
+        public int ExperienciaMaxima { get; set; } = 100;
         public int Nivel { get; set; }
         public int Mana { get; protected set; }
-
         public decimal Magia { get; protected set; }
 
 
-        public abstract void SubirNivel();
+        protected void SubirNivel()
+        {
+
+        }
+        protected void PerdeNivel()
+        {
+
+        }
+        protected void PerdeVida()
+        {
+
+        }
+        protected void GastaMana()
+        {
+
+        }
+        protected void SubirMagia()
+        {
+
+        }
     }
 }
