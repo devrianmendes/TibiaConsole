@@ -7,12 +7,18 @@ namespace personagens
         public int ExperienciaAtual { get; set; } = 0;
         public int ExperienciaMaxima { get; set; } = 100;
         public int Nivel { get; set; }
-        public int Mana { get; protected set; }
-        public decimal Magia { get; protected set; }
+        public int ManaAtual { get; protected set; }
+        public int ManaMaxima { get; protected set; }
 
 
-        protected void SubirNivel()
+        protected abstract void BeneficiosNivelClasse();
+        public void SubirNivel()
         {
+            Nivel++;
+            BeneficiosNivelClasse();
+            Console.WriteLine($"Parabéns, seu novo nível é {Nivel}.");
+            VidaAtual = VidaMaxima;
+            ManaAtual = ManaMaxima;
 
         }
         protected void PerdeNivel()
@@ -24,10 +30,6 @@ namespace personagens
 
         }
         protected void GastaMana()
-        {
-
-        }
-        protected void SubirMagia()
         {
 
         }

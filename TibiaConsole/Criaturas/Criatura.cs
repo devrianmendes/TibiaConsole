@@ -8,8 +8,7 @@
         public int VidaAtual { get; protected set; }
         public int Ataque { get; protected set; }
         public int Defesa { get; protected set; }
-        public int Cura { get; protected set; }
-
+        public bool isViva { get; protected set; } = true;
 
         public override string ToString()
         {
@@ -26,15 +25,15 @@
         public virtual void ReceberDano(int dano)
         {
             VidaAtual -= dano;
-            if(VidaAtual < 1)
+            if (VidaAtual < 1)
             {
                 Morrer();
             }
         }
 
-        protected virtual void Morrer()
+        public virtual void Morrer()
         {
-
+            isViva = false;
         }
 
     }

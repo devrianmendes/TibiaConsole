@@ -6,16 +6,6 @@ namespace monstros
     {
         public int Experiencia { get; protected set; }
 
-        public override void ReceberDano(int dano)
-        {
-            VidaAtual -= dano;
-            if (!EstaVivo())
-            {
-                
-            }
-        }
-
-
     }
 
 }
